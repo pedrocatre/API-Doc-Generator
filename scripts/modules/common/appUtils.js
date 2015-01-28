@@ -1,0 +1,1 @@
+define([],function(){return window.AppUtils=window.AppUtils||{},window.AppUtils});

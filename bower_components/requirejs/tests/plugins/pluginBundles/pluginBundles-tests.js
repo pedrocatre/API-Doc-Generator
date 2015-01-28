@@ -1,0 +1,1 @@
+require({bundles:{main:["text","text!template.html"]}},["text!template.html"],function(e){doh.register("pluginBundles",[function(n){n.is("main template",e)}]),doh.run()});

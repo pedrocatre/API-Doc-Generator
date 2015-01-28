@@ -1,0 +1,1 @@
+define(["module","exports"],function(e,t){var n=e.exports===t;e.exports.name="adder",e.exports.isEqual=n});

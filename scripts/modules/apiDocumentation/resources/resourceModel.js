@@ -1,0 +1,1 @@
+define(["backbone","modules/apiDocumentation/resources/interfaces/interfaceCollection"],function(e,t){return e.Model.extend({initialize:function(){this.interfaceCollection=new t(this.get("interfaces"))}})});

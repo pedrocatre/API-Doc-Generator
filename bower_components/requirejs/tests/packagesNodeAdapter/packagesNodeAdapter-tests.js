@@ -1,0 +1,1 @@
+require({nodeIdCompat:!0,baseUrl:"node_modules"},["foo"],function(e){doh.register("packagesNodeAdapter",[function(n){n.is("foo",e.name),n.is("bar",e.bar.name),n.is("baz",e.baz.name),n.is("bar",e.baz.bar.name)}]),doh.run()});

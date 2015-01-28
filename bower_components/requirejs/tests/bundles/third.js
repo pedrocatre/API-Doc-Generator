@@ -1,0 +1,1 @@
+define("third",{name:"third"});

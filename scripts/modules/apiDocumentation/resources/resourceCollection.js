@@ -1,0 +1,1 @@
+define(["backbone","underscore","modules/apiDocumentation/resources/resourceModel"],function(e,t,n){return e.Collection.extend({model:n})});

@@ -1,0 +1,23 @@
+<div class="request-query-schema">
+    <h4>Query Parameters</h4>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Parameter</th>
+            <th>Default</th>
+            <th>Description</th>
+            <th>Type</th>
+        </tr>
+        </thead>
+        <tbody>
+        {{#each properties}}
+        <tr>
+            <td>{{ @key }}</td>
+            <td>{{ default }}</td>
+            <td>{{ description }}</td>
+            <td>{{ type }}</td>
+        </tr>
+        {{/each}}
+        </tbody>
+    </table>
+</div>

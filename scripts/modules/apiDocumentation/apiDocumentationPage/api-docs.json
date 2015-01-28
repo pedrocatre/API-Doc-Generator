@@ -1,0 +1,2040 @@
+{
+    "baseURL": "http://127.0.0.1",
+    "mediaTypes": [
+        "application/json",
+        "text/plain"
+    ],
+    "models": {
+        "HTTPCreated": {
+            "description": "Information for a specific HTTP status.",
+            "id": "HTTPCreated",
+            "properties": {
+                "detail": {
+                    "type": "string"
+                },
+                "message": {
+                    "type": "string"
+                },
+                "status": {
+                    "type": "string"
+                },
+                "status_code": {
+                    "type": "integer"
+                }
+            },
+            "title": "Created",
+            "type": "object"
+        },
+        "HTTPOK": {
+            "description": "Information for a specific HTTP status.",
+            "id": "HTTPOK",
+            "properties": {
+                "detail": {
+                    "type": "string"
+                },
+                "message": {
+                    "type": "string"
+                },
+                "status": {
+                    "type": "string"
+                },
+                "status_code": {
+                    "type": "integer"
+                }
+            },
+            "title": "OK",
+            "type": "object"
+        },
+        "category": {
+            "description": "Product category, like doeme or doehq.",
+            "id": "category",
+            "properties": {
+                "created_at": {
+                    "description": "Entity creation date-time.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "created_by": {
+                    "description": "User who created the entity.",
+                    "type": "string"
+                },
+                "id": {
+                    "description": "Category primary key.",
+                    "maxLength": 30,
+                    "pattern": "^[a-zA-Z0-9]+$",
+                    "type": "string"
+                },
+                "title": {
+                    "description": "Title name of category.",
+                    "maxLength": 255,
+                    "type": "string"
+                },
+                "updated_at": {
+                    "description": "Entity update date-time.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "updated_by": {
+                    "description": "User who updated the entity.",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "title",
+                "id"
+            ],
+            "title": "Category",
+            "type": "object"
+        },
+        "categoryCreate": {
+            "description": "Product category, like doeme or doehq.",
+            "id": "categoryCreate",
+            "properties": {
+                "id": {
+                    "description": "Category primary key.",
+                    "maxLength": 30,
+                    "pattern": "^[a-zA-Z0-9]+$",
+                    "type": "string"
+                },
+                "title": {
+                    "description": "Title name of category.",
+                    "maxLength": 255,
+                    "type": "string"
+                }
+            },
+            "required": [
+                "id",
+                "title"
+            ],
+            "title": "Category",
+            "type": "object"
+        },
+        "categoryUpdate": {
+            "description": "Product category, like doeme or doehq.",
+            "id": "categoryUpdate",
+            "properties": {
+                "id": {
+                    "description": "Category primary key.",
+                    "maxLength": 30,
+                    "pattern": "^[a-zA-Z0-9]+$",
+                    "type": "string"
+                },
+                "title": {
+                    "description": "Title name of category.",
+                    "maxLength": 255,
+                    "type": "string"
+                }
+            },
+            "required": [
+                "id",
+                "title"
+            ],
+            "title": "Category",
+            "type": "object"
+        },
+        "contract": {
+            "description": "",
+            "id": "contract",
+            "properties": {
+                "billing_id": {
+                    "description": "Foreign ID to billing system entry.",
+                    "maxLength": 255,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "created_at": {
+                    "description": "Entity creation date-time.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "created_by": {
+                    "description": "User who created the entity.",
+                    "type": "string"
+                },
+                "customer_id": {
+                    "description": "Foreign ID to customer.",
+                    "maxLength": 30,
+                    "pattern": "^[a-zA-Z0-9]+$",
+                    "type": "string"
+                },
+                "expire_date": {
+                    "description": "End of the contract runtime.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "id": {
+                    "description": "Contract primary key.",
+                    "type": "string"
+                },
+                "pause": {
+                    "description": "Indicator if the contract runtime should be paused.",
+                    "type": "boolean"
+                },
+                "products": {
+                    "items": {
+                        "id": "productitems",
+                        "properties": {
+                            "config": {
+                                "description": "Config object.",
+                                "id": "config",
+                                "properties": {},
+                                "type": "object"
+                            },
+                            "pause": {
+                                "description": "Indicator if the product in a contract runtime should be paused.",
+                                "type": "boolean"
+                            },
+                            "product_id": {
+                                "description": "Foreign ID to product.",
+                                "maxLength": 30,
+                                "pattern": "^[a-zA-Z0-9]+$",
+                                "type": "string"
+                            }
+                        },
+                        "required": [
+                            "pause",
+                            "config",
+                            "product_id"
+                        ],
+                        "type": "object"
+                    },
+                    "type": "array"
+                },
+                "start_date": {
+                    "description": "Begin of the contract runtime.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "status": {
+                    "description": "Indicator in which status the contract is in.",
+                    "enum": [
+                        "free",
+                        "trail",
+                        "paid"
+                    ],
+                    "type": "string"
+                },
+                "updated_at": {
+                    "description": "Entity update date-time.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "updated_by": {
+                    "description": "User who updated the entity.",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "status",
+                "pause",
+                "products",
+                "expire_date",
+                "billing_id",
+                "customer_id",
+                "start_date"
+            ],
+            "title": "Contract",
+            "type": "object"
+        },
+        "contractCreate": {
+            "description": "",
+            "id": "contractCreate",
+            "properties": {
+                "billing_id": {
+                    "description": "Foreign ID to billing system entry.",
+                    "maxLength": 255,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "customer_id": {
+                    "description": "Foreign ID to customer.",
+                    "maxLength": 30,
+                    "pattern": "^[a-zA-Z0-9]+$",
+                    "type": "string"
+                },
+                "expire_date": {
+                    "description": "End of the contract runtime.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "id": {
+                    "description": "Contract primary key.",
+                    "type": "string"
+                },
+                "pause": {
+                    "description": "Indicator if the contract runtime should be paused.",
+                    "type": "boolean"
+                },
+                "products": {
+                    "items": {
+                        "id": "productitems",
+                        "properties": {
+                            "config": {
+                                "description": "Config object.",
+                                "id": "config",
+                                "properties": {},
+                                "type": "object"
+                            },
+                            "pause": {
+                                "description": "Indicator if the product in a contract runtime should be paused.",
+                                "type": "boolean"
+                            },
+                            "product_id": {
+                                "description": "Foreign ID to product.",
+                                "maxLength": 30,
+                                "pattern": "^[a-zA-Z0-9]+$",
+                                "type": "string"
+                            }
+                        },
+                        "required": [
+                            "pause",
+                            "config",
+                            "product_id"
+                        ],
+                        "type": "object"
+                    },
+                    "type": "array"
+                },
+                "start_date": {
+                    "description": "Begin of the contract runtime.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "status": {
+                    "description": "Indicator in which status the contract is in.",
+                    "enum": [
+                        "free",
+                        "trail",
+                        "paid"
+                    ],
+                    "type": "string"
+                }
+            },
+            "required": [
+                "status",
+                "pause",
+                "start_date",
+                "products",
+                "expire_date",
+                "billing_id",
+                "customer_id"
+            ],
+            "title": "Contract",
+            "type": "object"
+        },
+        "contractUpdate": {
+            "description": "",
+            "id": "contractUpdate",
+            "properties": {
+                "billing_id": {
+                    "description": "Foreign ID to billing system entry.",
+                    "maxLength": 255,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "customer_id": {
+                    "description": "Foreign ID to customer.",
+                    "maxLength": 30,
+                    "pattern": "^[a-zA-Z0-9]+$",
+                    "type": "string"
+                },
+                "expire_date": {
+                    "description": "End of the contract runtime.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "id": {
+                    "description": "Contract primary key.",
+                    "type": "string"
+                },
+                "pause": {
+                    "description": "Indicator if the contract runtime should be paused.",
+                    "type": "boolean"
+                },
+                "products": {
+                    "items": {
+                        "id": "productitems",
+                        "properties": {
+                            "config": {
+                                "description": "Config object.",
+                                "id": "config",
+                                "properties": {},
+                                "type": "object"
+                            },
+                            "pause": {
+                                "description": "Indicator if the product in a contract runtime should be paused.",
+                                "type": "boolean"
+                            },
+                            "product_id": {
+                                "description": "Foreign ID to product.",
+                                "maxLength": 30,
+                                "pattern": "^[a-zA-Z0-9]+$",
+                                "type": "string"
+                            }
+                        },
+                        "required": [
+                            "pause",
+                            "config",
+                            "product_id"
+                        ],
+                        "type": "object"
+                    },
+                    "type": "array"
+                },
+                "start_date": {
+                    "description": "Begin of the contract runtime.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "status": {
+                    "description": "Indicator in which status the contract is in.",
+                    "enum": [
+                        "free",
+                        "trail",
+                        "paid"
+                    ],
+                    "type": "string"
+                }
+            },
+            "required": [
+                "status",
+                "pause",
+                "start_date",
+                "products",
+                "expire_date",
+                "billing_id",
+                "customer_id"
+            ],
+            "title": "Contract",
+            "type": "object"
+        },
+        "customer": {
+            "description": "",
+            "id": "customer",
+            "properties": {
+                "created_at": {
+                    "description": "Entity creation date-time.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "created_by": {
+                    "description": "User who created the entity.",
+                    "type": "string"
+                },
+                "crm_id": {
+                    "description": "Foreign ID to CRM entry.",
+                    "maxLength": 255,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "id": {
+                    "description": "Customer primary key.",
+                    "maxLength": 30,
+                    "pattern": "^[a-zA-Z0-9]+$",
+                    "type": "string"
+                },
+                "title": {
+                    "description": "Display name of customer.",
+                    "maxLength": 255,
+                    "type": "string"
+                },
+                "updated_at": {
+                    "description": "Entity update date-time.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "updated_by": {
+                    "description": "User who updated the entity.",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "title",
+                "crm_id",
+                "id"
+            ],
+            "title": "Customer",
+            "type": "object"
+        },
+        "customerCreate": {
+            "description": "",
+            "id": "customerCreate",
+            "properties": {
+                "crm_id": {
+                    "description": "Foreign ID to CRM entry.",
+                    "maxLength": 255,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "id": {
+                    "description": "Customer primary key.",
+                    "maxLength": 30,
+                    "pattern": "^[a-zA-Z0-9]+$",
+                    "type": "string"
+                },
+                "title": {
+                    "description": "Display name of customer.",
+                    "maxLength": 255,
+                    "type": "string"
+                }
+            },
+            "required": [
+                "crm_id",
+                "id",
+                "title"
+            ],
+            "title": "Customer",
+            "type": "object"
+        },
+        "customerUpdate": {
+            "description": "",
+            "id": "customerUpdate",
+            "properties": {
+                "crm_id": {
+                    "description": "Foreign ID to CRM entry.",
+                    "maxLength": 255,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "id": {
+                    "description": "Customer primary key.",
+                    "maxLength": 30,
+                    "pattern": "^[a-zA-Z0-9]+$",
+                    "type": "string"
+                },
+                "title": {
+                    "description": "Display name of customer.",
+                    "maxLength": 255,
+                    "type": "string"
+                }
+            },
+            "required": [
+                "crm_id",
+                "id",
+                "title"
+            ],
+            "title": "Customer",
+            "type": "object"
+        },
+        "path:delete:/{id}": {
+            "id": "path:delete:/{id}",
+            "properties": {
+                "id": {
+                    "description": "Contract primary key.",
+                    "type": "string"
+                }
+            },
+            "title": "Path:DELETE:/{id}",
+            "type": "object"
+        },
+        "path:delete:/{id}/products/{idx}": {
+            "id": "path:delete:/{id}/products/{idx}",
+            "properties": {
+                "id": {
+                    "description": "Contract primary key.",
+                    "type": "string"
+                },
+                "idx": {
+                    "description": "List index of a contract product.",
+                    "type": "integer"
+                }
+            },
+            "required": [
+                "idx"
+            ],
+            "title": "Path:DELETE:/{id}/products/{idx}",
+            "type": "object"
+        },
+        "path:get:/{id}": {
+            "id": "path:get:/{id}",
+            "properties": {
+                "id": {
+                    "description": "Contract primary key.",
+                    "type": "string"
+                }
+            },
+            "title": "Path:GET:/{id}",
+            "type": "object"
+        },
+        "path:get:/{id}/products": {
+            "id": "path:get:/{id}/products",
+            "properties": {
+                "id": {
+                    "description": "Contract primary key.",
+                    "type": "string"
+                }
+            },
+            "title": "Path:GET:/{id}/products",
+            "type": "object"
+        },
+        "path:post:/{id}/products": {
+            "id": "path:post:/{id}/products",
+            "properties": {
+                "id": {
+                    "description": "Contract primary key.",
+                    "type": "string"
+                }
+            },
+            "title": "Path:POST:/{id}/products",
+            "type": "object"
+        },
+        "path:put:/{id}": {
+            "id": "path:put:/{id}",
+            "properties": {
+                "id": {
+                    "description": "Contract primary key.",
+                    "type": "string"
+                }
+            },
+            "title": "Path:PUT:/{id}",
+            "type": "object"
+        },
+        "product": {
+            "description": "Products like Netfeed 10",
+            "id": "product",
+            "properties": {
+                "category_id": {
+                    "description": "Foreign key to categories.",
+                    "maxLength": 30,
+                    "pattern": "^[a-zA-Z0-9]+$",
+                    "type": "string"
+                },
+                "created_at": {
+                    "description": "Entity creation date-time.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "created_by": {
+                    "description": "User who created the entity.",
+                    "type": "string"
+                },
+                "id": {
+                    "description": "Product primary key.",
+                    "maxLength": 30,
+                    "pattern": "^[a-zA-Z0-9]+$",
+                    "type": "string"
+                },
+                "schema_id": {
+                    "description": "Foreign key to schema.",
+                    "maxLength": 30,
+                    "pattern": "^[a-zA-Z0-9]+$",
+                    "type": "string"
+                },
+                "title": {
+                    "description": "Display name of product.",
+                    "maxLength": 255,
+                    "type": "string"
+                },
+                "updated_at": {
+                    "description": "Entity update date-time.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "updated_by": {
+                    "description": "User who updated the entity.",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "title",
+                "schema_id",
+                "category_id",
+                "id"
+            ],
+            "title": "Product",
+            "type": "object"
+        },
+        "productCreate": {
+            "description": "Products like Netfeed 10",
+            "id": "productCreate",
+            "properties": {
+                "category_id": {
+                    "description": "Foreign key to categories.",
+                    "maxLength": 30,
+                    "pattern": "^[a-zA-Z0-9]+$",
+                    "type": "string"
+                },
+                "id": {
+                    "description": "Product primary key.",
+                    "maxLength": 30,
+                    "pattern": "^[a-zA-Z0-9]+$",
+                    "type": "string"
+                },
+                "schema_id": {
+                    "description": "Foreign key to schema.",
+                    "maxLength": 30,
+                    "pattern": "^[a-zA-Z0-9]+$",
+                    "type": "string"
+                },
+                "title": {
+                    "description": "Display name of product.",
+                    "maxLength": 255,
+                    "type": "string"
+                }
+            },
+            "required": [
+                "schema_id",
+                "category_id",
+                "id",
+                "title"
+            ],
+            "title": "Product",
+            "type": "object"
+        },
+        "productUpdate": {
+            "description": "Products like Netfeed 10",
+            "id": "productUpdate",
+            "properties": {
+                "category_id": {
+                    "description": "Foreign key to categories.",
+                    "maxLength": 30,
+                    "pattern": "^[a-zA-Z0-9]+$",
+                    "type": "string"
+                },
+                "id": {
+                    "description": "Product primary key.",
+                    "maxLength": 30,
+                    "pattern": "^[a-zA-Z0-9]+$",
+                    "type": "string"
+                },
+                "schema_id": {
+                    "description": "Foreign key to schema.",
+                    "maxLength": 30,
+                    "pattern": "^[a-zA-Z0-9]+$",
+                    "type": "string"
+                },
+                "title": {
+                    "description": "Display name of product.",
+                    "maxLength": 255,
+                    "type": "string"
+                }
+            },
+            "required": [
+                "schema_id",
+                "category_id",
+                "id",
+                "title"
+            ],
+            "title": "Product",
+            "type": "object"
+        },
+        "productitems": {
+            "id": "productitems",
+            "properties": {
+                "config": {
+                    "description": "Config object.",
+                    "id": "config",
+                    "properties": {},
+                    "type": "object"
+                },
+                "pause": {
+                    "description": "Indicator if the product in a contract runtime should be paused.",
+                    "type": "boolean"
+                },
+                "product_id": {
+                    "description": "Foreign ID to product.",
+                    "maxLength": 30,
+                    "pattern": "^[a-zA-Z0-9]+$",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "pause",
+                "config",
+                "product_id"
+            ],
+            "type": "object"
+        },
+        "query:get:/": {
+            "id": "query:get:/",
+            "properties": {
+                "limit": {
+                    "default": 10,
+                    "description": "Number of elements max. returned.",
+                    "type": "integer"
+                },
+                "offset": {
+                    "default": 0,
+                    "description": "Offset.",
+                    "type": "integer"
+                }
+            },
+            "title": "Query:GET:/",
+            "type": "object"
+        },
+        "schema": {
+            "description": "JSON schema.",
+            "id": "schema",
+            "properties": {
+                "created_at": {
+                    "description": "Entity creation date-time.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "created_by": {
+                    "description": "User who created the entity.",
+                    "type": "string"
+                },
+                "description": {
+                    "description": "Discription of schema.",
+                    "maxLength": 255,
+                    "type": "string"
+                },
+                "id": {
+                    "description": "schema primary key.",
+                    "maxLength": 30,
+                    "pattern": "^[a-zA-Z0-9]+$",
+                    "type": "string"
+                },
+                "title": {
+                    "description": "Display name of schema.",
+                    "maxLength": 255,
+                    "type": "string"
+                },
+                "updated_at": {
+                    "description": "Entity update date-time.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "updated_by": {
+                    "description": "User who updated the entity.",
+                    "type": "string"
+                },
+                "value": {
+                    "description": "JSON schema.",
+                    "id": "value",
+                    "properties": {},
+                    "type": "object"
+                }
+            },
+            "required": [
+                "title",
+                "value",
+                "id",
+                "description"
+            ],
+            "title": "Schema",
+            "type": "object"
+        },
+        "schemaCreate": {
+            "description": "JSON schema.",
+            "id": "schemaCreate",
+            "properties": {
+                "description": {
+                    "description": "Discription of schema.",
+                    "maxLength": 255,
+                    "type": "string"
+                },
+                "id": {
+                    "description": "schema primary key.",
+                    "maxLength": 30,
+                    "pattern": "^[a-zA-Z0-9]+$",
+                    "type": "string"
+                },
+                "title": {
+                    "description": "Display name of schema.",
+                    "maxLength": 255,
+                    "type": "string"
+                },
+                "value": {
+                    "description": "JSON schema.",
+                    "id": "value",
+                    "properties": {},
+                    "type": "object"
+                }
+            },
+            "required": [
+                "description",
+                "id",
+                "value",
+                "title"
+            ],
+            "title": "Schema",
+            "type": "object"
+        },
+        "schemaUpdate": {
+            "description": "JSON schema.",
+            "id": "schemaUpdate",
+            "properties": {
+                "description": {
+                    "description": "Discription of schema.",
+                    "maxLength": 255,
+                    "type": "string"
+                },
+                "id": {
+                    "description": "schema primary key.",
+                    "maxLength": 30,
+                    "pattern": "^[a-zA-Z0-9]+$",
+                    "type": "string"
+                },
+                "title": {
+                    "description": "Display name of schema.",
+                    "maxLength": 255,
+                    "type": "string"
+                },
+                "value": {
+                    "description": "JSON schema.",
+                    "id": "value",
+                    "properties": {},
+                    "type": "object"
+                }
+            },
+            "required": [
+                "description",
+                "id",
+                "value",
+                "title"
+            ],
+            "title": "Schema",
+            "type": "object"
+        }
+    },
+    "resources": [
+        {
+            "description": "JSON contract resource.",
+            "id": "Contracts",
+            "interfaces": [
+                {
+                    "description": "",
+                    "id": "Contracts.get_contract_products",
+                    "method": "GET",
+                    "path": "/contracts/{id}/products",
+                    "request": {
+                        "bodySchema": {},
+                        "pathSchema": {
+                            "$ref": "path:get:/{id}/products"
+                        },
+                        "querySchema": {}
+                    },
+                    "response": {
+                        "bodySchema": {},
+                        "errors": [
+                            {
+                                "errorDetail": "If validation of the URL path failed.",
+                                "errorMessage": "The request cannot be fulfilled due to bad syntax or invalid data.",
+                                "statusCode": 400,
+                                "statusMessage": "Bad Request"
+                            },
+                            {
+                                "errorDetail": "If no contract with specified ID exists.",
+                                "errorMessage": "",
+                                "statusCode": 404,
+                                "statusMessage": "Not Found"
+                            }
+                        ],
+                        "headerSchema": {},
+                        "statusCode": 200,
+                        "statusMessage": "200 OK"
+                    },
+                    "title": "get_contract_products"
+                },
+                {
+                    "description": "",
+                    "id": "Contracts.post_contract_products",
+                    "method": "POST",
+                    "path": "/contracts/{id}/products",
+                    "request": {
+                        "bodySchema": {
+                            "$ref": "productitems"
+                        },
+                        "pathSchema": {
+                            "$ref": "path:post:/{id}/products"
+                        },
+                        "querySchema": {}
+                    },
+                    "response": {
+                        "bodySchema": {
+                            "$ref": "HTTPCreated"
+                        },
+                        "errors": [
+                            {
+                                "errorDetail": "If validation of the URL path failed.",
+                                "errorMessage": "The request cannot be fulfilled due to bad syntax or invalid data.",
+                                "statusCode": 400,
+                                "statusMessage": "Bad Request"
+                            },
+                            {
+                                "errorDetail": "If validation of the HTTP body failed.",
+                                "errorMessage": "The request cannot be fulfilled due to bad syntax or invalid data.",
+                                "statusCode": 400,
+                                "statusMessage": "Bad Request"
+                            },
+                            {
+                                "errorDetail": "If no contract with specified ID exists.",
+                                "errorMessage": "",
+                                "statusCode": 404,
+                                "statusMessage": "Not Found"
+                            },
+                            {
+                                "errorDetail": "If the specified product doesn't exist.",
+                                "errorMessage": "",
+                                "statusCode": 404,
+                                "statusMessage": "Not Found"
+                            },
+                            {
+                                "errorDetail": "If the product config doesn't validate against",
+                                "errorMessage": "The request cannot be fulfilled due to bad syntax or invalid data.",
+                                "statusCode": 400,
+                                "statusMessage": "Bad Request"
+                            }
+                        ],
+                        "headerSchema": {},
+                        "statusCode": 200,
+                        "statusMessage": "200 OK"
+                    },
+                    "title": "post_contract_products"
+                },
+                {
+                    "description": "",
+                    "id": "Contracts.get_contracts",
+                    "method": "GET",
+                    "path": "/contracts",
+                    "request": {
+                        "bodySchema": {},
+                        "pathSchema": {},
+                        "querySchema": {
+                            "$ref": "query:get:/"
+                        }
+                    },
+                    "response": {
+                        "bodySchema": {},
+                        "errors": [
+                            {
+                                "errorDetail": "If validation of the URL query string failed.",
+                                "errorMessage": "The request cannot be fulfilled due to bad syntax or invalid data.",
+                                "statusCode": 400,
+                                "statusMessage": "Bad Request"
+                            }
+                        ],
+                        "headerSchema": {},
+                        "statusCode": 200,
+                        "statusMessage": "200 OK"
+                    },
+                    "title": "get_contracts"
+                },
+                {
+                    "description": "",
+                    "id": "Contracts.create_contract",
+                    "method": "POST",
+                    "path": "/contracts",
+                    "request": {
+                        "bodySchema": {
+                            "$ref": "contractCreate"
+                        },
+                        "pathSchema": {},
+                        "querySchema": {}
+                    },
+                    "response": {
+                        "bodySchema": {
+                            "$ref": "HTTPCreated"
+                        },
+                        "errors": [
+                            {
+                                "errorDetail": "If validation of the HTTP body failed.",
+                                "errorMessage": "The request cannot be fulfilled due to bad syntax or invalid data.",
+                                "statusCode": 400,
+                                "statusMessage": "Bad Request"
+                            },
+                            {
+                                "errorDetail": "If specified customer doesn't exist.",
+                                "errorMessage": "",
+                                "statusCode": 404,
+                                "statusMessage": "Not Found"
+                            },
+                            {
+                                "errorDetail": "If a specified product doesn't exist.",
+                                "errorMessage": "",
+                                "statusCode": 404,
+                                "statusMessage": "Not Found"
+                            },
+                            {
+                                "errorDetail": "If a product config doesn't validate against",
+                                "errorMessage": "The request cannot be fulfilled due to bad syntax or invalid data.",
+                                "statusCode": 400,
+                                "statusMessage": "Bad Request"
+                            }
+                        ],
+                        "headerSchema": {},
+                        "statusCode": 200,
+                        "statusMessage": "200 OK"
+                    },
+                    "title": "create_contract"
+                },
+                {
+                    "description": "",
+                    "id": "Contracts.get_contract",
+                    "method": "GET",
+                    "path": "/contracts/{id}",
+                    "request": {
+                        "bodySchema": {},
+                        "pathSchema": {
+                            "$ref": "path:get:/{id}"
+                        },
+                        "querySchema": {}
+                    },
+                    "response": {
+                        "bodySchema": {
+                            "$ref": "contract"
+                        },
+                        "errors": [
+                            {
+                                "errorDetail": "If validation of the URL path failed.",
+                                "errorMessage": "The request cannot be fulfilled due to bad syntax or invalid data.",
+                                "statusCode": 400,
+                                "statusMessage": "Bad Request"
+                            },
+                            {
+                                "errorDetail": "If no contract with specified ID exists.",
+                                "errorMessage": "",
+                                "statusCode": 404,
+                                "statusMessage": "Not Found"
+                            }
+                        ],
+                        "headerSchema": {},
+                        "statusCode": 200,
+                        "statusMessage": "200 OK"
+                    },
+                    "title": "get_contract"
+                },
+                {
+                    "description": "Delete a contract product.",
+                    "id": "Contracts.delete_contract_product",
+                    "method": "DELETE",
+                    "path": "/contracts/{id}/products/{idx}",
+                    "request": {
+                        "bodySchema": {},
+                        "pathSchema": {
+                            "$ref": "path:delete:/{id}/products/{idx}"
+                        },
+                        "querySchema": {}
+                    },
+                    "response": {
+                        "bodySchema": {
+                            "$ref": "HTTPOK"
+                        },
+                        "errors": [
+                            {
+                                "errorDetail": "If validation of the URL path failed.",
+                                "errorMessage": "The request cannot be fulfilled due to bad syntax or invalid data.",
+                                "statusCode": 400,
+                                "statusMessage": "Bad Request"
+                            },
+                            {
+                                "errorDetail": "If no contract with specified ID exists.",
+                                "errorMessage": "",
+                                "statusCode": 404,
+                                "statusMessage": "Not Found"
+                            }
+                        ],
+                        "headerSchema": {},
+                        "statusCode": 200,
+                        "statusMessage": "200 OK"
+                    },
+                    "title": "delete_contract_product"
+                },
+                {
+                    "description": "",
+                    "id": "Contracts.delete_contract",
+                    "method": "DELETE",
+                    "path": "/contracts/{id}",
+                    "request": {
+                        "bodySchema": {},
+                        "pathSchema": {
+                            "$ref": "path:delete:/{id}"
+                        },
+                        "querySchema": {}
+                    },
+                    "response": {
+                        "bodySchema": {
+                            "$ref": "HTTPOK"
+                        },
+                        "errors": [
+                            {
+                                "errorDetail": "If validation of the URL path failed.",
+                                "errorMessage": "The request cannot be fulfilled due to bad syntax or invalid data.",
+                                "statusCode": 400,
+                                "statusMessage": "Bad Request"
+                            },
+                            {
+                                "errorDetail": "If no contract with specified ID exists.",
+                                "errorMessage": "",
+                                "statusCode": 404,
+                                "statusMessage": "Not Found"
+                            }
+                        ],
+                        "headerSchema": {},
+                        "statusCode": 200,
+                        "statusMessage": "200 OK"
+                    },
+                    "title": "delete_contract"
+                },
+                {
+                    "description": "",
+                    "id": "Contracts.update_contract",
+                    "method": "PUT",
+                    "path": "/contracts/{id}",
+                    "request": {
+                        "bodySchema": {
+                            "$ref": "contractUpdate"
+                        },
+                        "pathSchema": {
+                            "$ref": "path:put:/{id}"
+                        },
+                        "querySchema": {}
+                    },
+                    "response": {
+                        "bodySchema": {
+                            "$ref": "contract"
+                        },
+                        "errors": [
+                            {
+                                "errorDetail": "If validation of the URL path failed.",
+                                "errorMessage": "The request cannot be fulfilled due to bad syntax or invalid data.",
+                                "statusCode": 400,
+                                "statusMessage": "Bad Request"
+                            },
+                            {
+                                "errorDetail": "If validation of the HTTP body failed.",
+                                "errorMessage": "The request cannot be fulfilled due to bad syntax or invalid data.",
+                                "statusCode": 400,
+                                "statusMessage": "Bad Request"
+                            },
+                            {
+                                "errorDetail": "If specified customer doesn't exist.",
+                                "errorMessage": "",
+                                "statusCode": 404,
+                                "statusMessage": "Not Found"
+                            },
+                            {
+                                "errorDetail": "If no contract with specified ID exists.",
+                                "errorMessage": "",
+                                "statusCode": 404,
+                                "statusMessage": "Not Found"
+                            },
+                            {
+                                "errorDetail": "If a specified product doesn't exist.",
+                                "errorMessage": "",
+                                "statusCode": 404,
+                                "statusMessage": "Not Found"
+                            },
+                            {
+                                "errorDetail": "If a product config doesn't validate against",
+                                "errorMessage": "The request cannot be fulfilled due to bad syntax or invalid data.",
+                                "statusCode": 400,
+                                "statusMessage": "Bad Request"
+                            }
+                        ],
+                        "headerSchema": {},
+                        "statusCode": 200,
+                        "statusMessage": "200 OK"
+                    },
+                    "title": "update_contract"
+                }
+            ],
+            "path": "/contracts",
+            "title": "Contracts"
+        },
+        {
+            "description": "JSON customer resource.",
+            "id": "Customers",
+            "interfaces": [
+                {
+                    "description": "",
+                    "id": "Customers.create_customer",
+                    "method": "POST",
+                    "path": "/customers",
+                    "request": {
+                        "bodySchema": {
+                            "$ref": "customerCreate"
+                        },
+                        "pathSchema": {},
+                        "querySchema": {}
+                    },
+                    "response": {
+                        "bodySchema": {
+                            "$ref": "HTTPCreated"
+                        },
+                        "errors": [
+                            {
+                                "errorDetail": "If validation of the HTTP body failed.",
+                                "errorMessage": "The request cannot be fulfilled due to bad syntax or invalid data.",
+                                "statusCode": 400,
+                                "statusMessage": "Bad Request"
+                            },
+                            {
+                                "errorDetail": "If a customer with specified ID already exists.",
+                                "errorMessage": "",
+                                "statusCode": 409,
+                                "statusMessage": "Conflict"
+                            },
+                            {
+                                "errorDetail": "If the foreign crm_id is invalid.",
+                                "errorMessage": "",
+                                "statusCode": 404,
+                                "statusMessage": "Not Found"
+                            }
+                        ],
+                        "headerSchema": {},
+                        "statusCode": 200,
+                        "statusMessage": "200 OK"
+                    },
+                    "title": "create_customer"
+                },
+                {
+                    "description": "",
+                    "id": "Customers.update_customer",
+                    "method": "PUT",
+                    "path": "/customers/{id}",
+                    "request": {
+                        "bodySchema": {
+                            "$ref": "customerUpdate"
+                        },
+                        "pathSchema": {
+                            "$ref": "path:put:/{id}"
+                        },
+                        "querySchema": {}
+                    },
+                    "response": {
+                        "bodySchema": {
+                            "$ref": "customer"
+                        },
+                        "errors": [
+                            {
+                                "errorDetail": "If validation of the URL path failed.",
+                                "errorMessage": "The request cannot be fulfilled due to bad syntax or invalid data.",
+                                "statusCode": 400,
+                                "statusMessage": "Bad Request"
+                            },
+                            {
+                                "errorDetail": "If validation of the HTTP body failed.",
+                                "errorMessage": "The request cannot be fulfilled due to bad syntax or invalid data.",
+                                "statusCode": 400,
+                                "statusMessage": "Bad Request"
+                            },
+                            {
+                                "errorDetail": "If no customer with specified ID exists.",
+                                "errorMessage": "",
+                                "statusCode": 404,
+                                "statusMessage": "Not Found"
+                            },
+                            {
+                                "errorDetail": "If the foreign crm_id is invalid.",
+                                "errorMessage": "",
+                                "statusCode": 404,
+                                "statusMessage": "Not Found"
+                            }
+                        ],
+                        "headerSchema": {},
+                        "statusCode": 200,
+                        "statusMessage": "200 OK"
+                    },
+                    "title": "update_customer"
+                },
+                {
+                    "description": "",
+                    "id": "Customers.delete_customer",
+                    "method": "DELETE",
+                    "path": "/customers/{id}",
+                    "request": {
+                        "bodySchema": {},
+                        "pathSchema": {
+                            "$ref": "path:delete:/{id}"
+                        },
+                        "querySchema": {}
+                    },
+                    "response": {
+                        "bodySchema": {
+                            "$ref": "HTTPOK"
+                        },
+                        "errors": [
+                            {
+                                "errorDetail": "If validation of the URL path failed.",
+                                "errorMessage": "The request cannot be fulfilled due to bad syntax or invalid data.",
+                                "statusCode": 400,
+                                "statusMessage": "Bad Request"
+                            },
+                            {
+                                "errorDetail": "If no customer with specified ID exists.",
+                                "errorMessage": "",
+                                "statusCode": 404,
+                                "statusMessage": "Not Found"
+                            }
+                        ],
+                        "headerSchema": {},
+                        "statusCode": 200,
+                        "statusMessage": "200 OK"
+                    },
+                    "title": "delete_customer"
+                },
+                {
+                    "description": "",
+                    "id": "Customers.get_customer",
+                    "method": "GET",
+                    "path": "/customers/{id}",
+                    "request": {
+                        "bodySchema": {},
+                        "pathSchema": {
+                            "$ref": "path:get:/{id}"
+                        },
+                        "querySchema": {}
+                    },
+                    "response": {
+                        "bodySchema": {
+                            "$ref": "customer"
+                        },
+                        "errors": [
+                            {
+                                "errorDetail": "If validation of the URL path failed.",
+                                "errorMessage": "The request cannot be fulfilled due to bad syntax or invalid data.",
+                                "statusCode": 400,
+                                "statusMessage": "Bad Request"
+                            },
+                            {
+                                "errorDetail": "If no customer with specified ID exists.",
+                                "errorMessage": "",
+                                "statusCode": 404,
+                                "statusMessage": "Not Found"
+                            }
+                        ],
+                        "headerSchema": {},
+                        "statusCode": 200,
+                        "statusMessage": "200 OK"
+                    },
+                    "title": "get_customer"
+                },
+                {
+                    "description": "",
+                    "id": "Customers.get_customers",
+                    "method": "GET",
+                    "path": "/customers",
+                    "request": {
+                        "bodySchema": {},
+                        "pathSchema": {},
+                        "querySchema": {
+                            "$ref": "query:get:/"
+                        }
+                    },
+                    "response": {
+                        "bodySchema": {},
+                        "errors": [
+                            {
+                                "errorDetail": "If validation of the URL query string failed.",
+                                "errorMessage": "The request cannot be fulfilled due to bad syntax or invalid data.",
+                                "statusCode": 400,
+                                "statusMessage": "Bad Request"
+                            }
+                        ],
+                        "headerSchema": {},
+                        "statusCode": 200,
+                        "statusMessage": "200 OK"
+                    },
+                    "title": "get_customers"
+                }
+            ],
+            "path": "/customers",
+            "title": "Customers"
+        },
+        {
+            "description": "JSON product resource.",
+            "id": "Products",
+            "interfaces": [
+                {
+                    "description": "",
+                    "id": "Products.get_products",
+                    "method": "GET",
+                    "path": "/products",
+                    "request": {
+                        "bodySchema": {},
+                        "pathSchema": {},
+                        "querySchema": {
+                            "$ref": "query:get:/"
+                        }
+                    },
+                    "response": {
+                        "bodySchema": {},
+                        "errors": [
+                            {
+                                "errorDetail": "If validation of the URL query string failed.",
+                                "errorMessage": "The request cannot be fulfilled due to bad syntax or invalid data.",
+                                "statusCode": 400,
+                                "statusMessage": "Bad Request"
+                            }
+                        ],
+                        "headerSchema": {},
+                        "statusCode": 200,
+                        "statusMessage": "200 OK"
+                    },
+                    "title": "get_products"
+                },
+                {
+                    "description": "",
+                    "id": "Products.get_product",
+                    "method": "GET",
+                    "path": "/products/{id}",
+                    "request": {
+                        "bodySchema": {},
+                        "pathSchema": {
+                            "$ref": "path:get:/{id}"
+                        },
+                        "querySchema": {}
+                    },
+                    "response": {
+                        "bodySchema": {
+                            "$ref": "product"
+                        },
+                        "errors": [
+                            {
+                                "errorDetail": "If validation of the URL path failed.",
+                                "errorMessage": "The request cannot be fulfilled due to bad syntax or invalid data.",
+                                "statusCode": 400,
+                                "statusMessage": "Bad Request"
+                            },
+                            {
+                                "errorDetail": "If no product with specified ID exists.",
+                                "errorMessage": "",
+                                "statusCode": 404,
+                                "statusMessage": "Not Found"
+                            }
+                        ],
+                        "headerSchema": {},
+                        "statusCode": 200,
+                        "statusMessage": "200 OK"
+                    },
+                    "title": "get_product"
+                },
+                {
+                    "description": "",
+                    "id": "Products.update_product",
+                    "method": "PUT",
+                    "path": "/products/{id}",
+                    "request": {
+                        "bodySchema": {
+                            "$ref": "productUpdate"
+                        },
+                        "pathSchema": {
+                            "$ref": "path:put:/{id}"
+                        },
+                        "querySchema": {}
+                    },
+                    "response": {
+                        "bodySchema": {
+                            "$ref": "product"
+                        },
+                        "errors": [
+                            {
+                                "errorDetail": "If validation of the URL path failed.",
+                                "errorMessage": "The request cannot be fulfilled due to bad syntax or invalid data.",
+                                "statusCode": 400,
+                                "statusMessage": "Bad Request"
+                            },
+                            {
+                                "errorDetail": "If validation of the HTTP body failed.",
+                                "errorMessage": "The request cannot be fulfilled due to bad syntax or invalid data.",
+                                "statusCode": 400,
+                                "statusMessage": "Bad Request"
+                            },
+                            {
+                                "errorDetail": "If no product with specified ID exists.",
+                                "errorMessage": "",
+                                "statusCode": 404,
+                                "statusMessage": "Not Found"
+                            },
+                            {
+                                "errorDetail": "If the foreign category doesn't exist.",
+                                "errorMessage": "",
+                                "statusCode": 404,
+                                "statusMessage": "Not Found"
+                            },
+                            {
+                                "errorDetail": "If the foreign schema doesn't exist.",
+                                "errorMessage": "",
+                                "statusCode": 404,
+                                "statusMessage": "Not Found"
+                            }
+                        ],
+                        "headerSchema": {},
+                        "statusCode": 200,
+                        "statusMessage": "200 OK"
+                    },
+                    "title": "update_product"
+                },
+                {
+                    "description": "",
+                    "id": "Products.create_product",
+                    "method": "POST",
+                    "path": "/products",
+                    "request": {
+                        "bodySchema": {
+                            "$ref": "productCreate"
+                        },
+                        "pathSchema": {},
+                        "querySchema": {}
+                    },
+                    "response": {
+                        "bodySchema": {
+                            "$ref": "HTTPCreated"
+                        },
+                        "errors": [
+                            {
+                                "errorDetail": "If validation of the HTTP body failed.",
+                                "errorMessage": "The request cannot be fulfilled due to bad syntax or invalid data.",
+                                "statusCode": 400,
+                                "statusMessage": "Bad Request"
+                            },
+                            {
+                                "errorDetail": "If a product with specified ID already exists.",
+                                "errorMessage": "",
+                                "statusCode": 409,
+                                "statusMessage": "Conflict"
+                            },
+                            {
+                                "errorDetail": "If the foreign category doesn't exist.",
+                                "errorMessage": "",
+                                "statusCode": 404,
+                                "statusMessage": "Not Found"
+                            },
+                            {
+                                "errorDetail": "If the foreign schema doesn't exist.",
+                                "errorMessage": "",
+                                "statusCode": 404,
+                                "statusMessage": "Not Found"
+                            }
+                        ],
+                        "headerSchema": {},
+                        "statusCode": 200,
+                        "statusMessage": "200 OK"
+                    },
+                    "title": "create_product"
+                },
+                {
+                    "description": "",
+                    "id": "Products.delete_product",
+                    "method": "DELETE",
+                    "path": "/products/{id}",
+                    "request": {
+                        "bodySchema": {},
+                        "pathSchema": {
+                            "$ref": "path:delete:/{id}"
+                        },
+                        "querySchema": {}
+                    },
+                    "response": {
+                        "bodySchema": {
+                            "$ref": "HTTPOK"
+                        },
+                        "errors": [
+                            {
+                                "errorDetail": "If validation of the URL path failed.",
+                                "errorMessage": "The request cannot be fulfilled due to bad syntax or invalid data.",
+                                "statusCode": 400,
+                                "statusMessage": "Bad Request"
+                            },
+                            {
+                                "errorDetail": "If no product with specified ID exists.",
+                                "errorMessage": "",
+                                "statusCode": 404,
+                                "statusMessage": "Not Found"
+                            }
+                        ],
+                        "headerSchema": {},
+                        "statusCode": 200,
+                        "statusMessage": "200 OK"
+                    },
+                    "title": "delete_product"
+                }
+            ],
+            "path": "/products",
+            "title": "Products"
+        },
+        {
+            "description": "Product categories like doeme or doehq.",
+            "id": "Categories",
+            "interfaces": [
+                {
+                    "description": "",
+                    "id": "Categories.create_category",
+                    "method": "POST",
+                    "path": "/categories",
+                    "request": {
+                        "bodySchema": {
+                            "$ref": "categoryCreate"
+                        },
+                        "pathSchema": {},
+                        "querySchema": {}
+                    },
+                    "response": {
+                        "bodySchema": {
+                            "$ref": "HTTPCreated"
+                        },
+                        "errors": [
+                            {
+                                "errorDetail": "If validation of the HTTP body failed.",
+                                "errorMessage": "The request cannot be fulfilled due to bad syntax or invalid data.",
+                                "statusCode": 400,
+                                "statusMessage": "Bad Request"
+                            },
+                            {
+                                "errorDetail": "If a category with specified ID already exists.",
+                                "errorMessage": "",
+                                "statusCode": 409,
+                                "statusMessage": "Conflict"
+                            }
+                        ],
+                        "headerSchema": {},
+                        "statusCode": 200,
+                        "statusMessage": "200 OK"
+                    },
+                    "title": "create_category"
+                },
+                {
+                    "description": "",
+                    "id": "Categories.update_category",
+                    "method": "PUT",
+                    "path": "/categories/{id}",
+                    "request": {
+                        "bodySchema": {
+                            "$ref": "categoryUpdate"
+                        },
+                        "pathSchema": {
+                            "$ref": "path:put:/{id}"
+                        },
+                        "querySchema": {}
+                    },
+                    "response": {
+                        "bodySchema": {
+                            "$ref": "category"
+                        },
+                        "errors": [
+                            {
+                                "errorDetail": "If validation of the URL path failed.",
+                                "errorMessage": "The request cannot be fulfilled due to bad syntax or invalid data.",
+                                "statusCode": 400,
+                                "statusMessage": "Bad Request"
+                            },
+                            {
+                                "errorDetail": "If validation of the HTTP body failed.",
+                                "errorMessage": "The request cannot be fulfilled due to bad syntax or invalid data.",
+                                "statusCode": 400,
+                                "statusMessage": "Bad Request"
+                            },
+                            {
+                                "errorDetail": "If no category with specified ID exists.",
+                                "errorMessage": "",
+                                "statusCode": 404,
+                                "statusMessage": "Not Found"
+                            }
+                        ],
+                        "headerSchema": {},
+                        "statusCode": 200,
+                        "statusMessage": "200 OK"
+                    },
+                    "title": "update_category"
+                },
+                {
+                    "description": "",
+                    "id": "Categories.get_category",
+                    "method": "GET",
+                    "path": "/categories/{id}",
+                    "request": {
+                        "bodySchema": {},
+                        "pathSchema": {
+                            "$ref": "path:get:/{id}"
+                        },
+                        "querySchema": {}
+                    },
+                    "response": {
+                        "bodySchema": {
+                            "$ref": "category"
+                        },
+                        "errors": [
+                            {
+                                "errorDetail": "If validation of the URL path failed.",
+                                "errorMessage": "The request cannot be fulfilled due to bad syntax or invalid data.",
+                                "statusCode": 400,
+                                "statusMessage": "Bad Request"
+                            },
+                            {
+                                "errorDetail": "If no category with specified ID exists.",
+                                "errorMessage": "",
+                                "statusCode": 404,
+                                "statusMessage": "Not Found"
+                            }
+                        ],
+                        "headerSchema": {},
+                        "statusCode": 200,
+                        "statusMessage": "200 OK"
+                    },
+                    "title": "get_category"
+                },
+                {
+                    "description": "",
+                    "id": "Categories.get_categories",
+                    "method": "GET",
+                    "path": "/categories",
+                    "request": {
+                        "bodySchema": {},
+                        "pathSchema": {},
+                        "querySchema": {
+                            "$ref": "query:get:/"
+                        }
+                    },
+                    "response": {
+                        "bodySchema": {},
+                        "errors": [
+                            {
+                                "errorDetail": "If validation of the URL query string failed.",
+                                "errorMessage": "The request cannot be fulfilled due to bad syntax or invalid data.",
+                                "statusCode": 400,
+                                "statusMessage": "Bad Request"
+                            }
+                        ],
+                        "headerSchema": {},
+                        "statusCode": 200,
+                        "statusMessage": "200 OK"
+                    },
+                    "title": "get_categories"
+                },
+                {
+                    "description": "",
+                    "id": "Categories.delete_category",
+                    "method": "DELETE",
+                    "path": "/categories/{id}",
+                    "request": {
+                        "bodySchema": {},
+                        "pathSchema": {
+                            "$ref": "path:delete:/{id}"
+                        },
+                        "querySchema": {}
+                    },
+                    "response": {
+                        "bodySchema": {
+                            "$ref": "HTTPOK"
+                        },
+                        "errors": [
+                            {
+                                "errorDetail": "If validation of the URL path failed.",
+                                "errorMessage": "The request cannot be fulfilled due to bad syntax or invalid data.",
+                                "statusCode": 400,
+                                "statusMessage": "Bad Request"
+                            },
+                            {
+                                "errorDetail": "If no category with specified ID exists.",
+                                "errorMessage": "",
+                                "statusCode": 404,
+                                "statusMessage": "Not Found"
+                            }
+                        ],
+                        "headerSchema": {},
+                        "statusCode": 200,
+                        "statusMessage": "200 OK"
+                    },
+                    "title": "delete_category"
+                }
+            ],
+            "path": "/categories",
+            "title": "Categories"
+        },
+        {
+            "description": "JSON schema resource.",
+            "id": "Schemas",
+            "interfaces": [
+                {
+                    "description": "",
+                    "id": "Schemas.delete_schema",
+                    "method": "DELETE",
+                    "path": "/schemas/{id}",
+                    "request": {
+                        "bodySchema": {},
+                        "pathSchema": {
+                            "$ref": "path:delete:/{id}"
+                        },
+                        "querySchema": {}
+                    },
+                    "response": {
+                        "bodySchema": {
+                            "$ref": "HTTPOK"
+                        },
+                        "errors": [
+                            {
+                                "errorDetail": "If validation of the URL path failed.",
+                                "errorMessage": "The request cannot be fulfilled due to bad syntax or invalid data.",
+                                "statusCode": 400,
+                                "statusMessage": "Bad Request"
+                            },
+                            {
+                                "errorDetail": "If no schema with specified ID exists.",
+                                "errorMessage": "",
+                                "statusCode": 404,
+                                "statusMessage": "Not Found"
+                            }
+                        ],
+                        "headerSchema": {},
+                        "statusCode": 200,
+                        "statusMessage": "200 OK"
+                    },
+                    "title": "delete_schema"
+                },
+                {
+                    "description": "",
+                    "id": "Schemas.update_schema",
+                    "method": "PUT",
+                    "path": "/schemas/{id}",
+                    "request": {
+                        "bodySchema": {
+                            "$ref": "schemaUpdate"
+                        },
+                        "pathSchema": {
+                            "$ref": "path:put:/{id}"
+                        },
+                        "querySchema": {}
+                    },
+                    "response": {
+                        "bodySchema": {
+                            "$ref": "schema"
+                        },
+                        "errors": [
+                            {
+                                "errorDetail": "If validation of the URL path failed.",
+                                "errorMessage": "The request cannot be fulfilled due to bad syntax or invalid data.",
+                                "statusCode": 400,
+                                "statusMessage": "Bad Request"
+                            },
+                            {
+                                "errorDetail": "If validation of the HTTP body failed.",
+                                "errorMessage": "The request cannot be fulfilled due to bad syntax or invalid data.",
+                                "statusCode": 400,
+                                "statusMessage": "Bad Request"
+                            },
+                            {
+                                "errorDetail": "If no schema with specified ID exists.",
+                                "errorMessage": "",
+                                "statusCode": 404,
+                                "statusMessage": "Not Found"
+                            }
+                        ],
+                        "headerSchema": {},
+                        "statusCode": 200,
+                        "statusMessage": "200 OK"
+                    },
+                    "title": "update_schema"
+                },
+                {
+                    "description": "",
+                    "id": "Schemas.create_schema",
+                    "method": "POST",
+                    "path": "/schemas",
+                    "request": {
+                        "bodySchema": {
+                            "$ref": "schemaCreate"
+                        },
+                        "pathSchema": {},
+                        "querySchema": {}
+                    },
+                    "response": {
+                        "bodySchema": {
+                            "$ref": "HTTPCreated"
+                        },
+                        "errors": [
+                            {
+                                "errorDetail": "If validation of the HTTP body failed.",
+                                "errorMessage": "The request cannot be fulfilled due to bad syntax or invalid data.",
+                                "statusCode": 400,
+                                "statusMessage": "Bad Request"
+                            },
+                            {
+                                "errorDetail": "If a schema with specified ID already exists.",
+                                "errorMessage": "",
+                                "statusCode": 409,
+                                "statusMessage": "Conflict"
+                            }
+                        ],
+                        "headerSchema": {},
+                        "statusCode": 200,
+                        "statusMessage": "200 OK"
+                    },
+                    "title": "create_schema"
+                },
+                {
+                    "description": "",
+                    "id": "Schemas.get_schema",
+                    "method": "GET",
+                    "path": "/schemas/{id}",
+                    "request": {
+                        "bodySchema": {},
+                        "pathSchema": {
+                            "$ref": "path:get:/{id}"
+                        },
+                        "querySchema": {}
+                    },
+                    "response": {
+                        "bodySchema": {
+                            "$ref": "schema"
+                        },
+                        "errors": [
+                            {
+                                "errorDetail": "If validation of the URL path failed.",
+                                "errorMessage": "The request cannot be fulfilled due to bad syntax or invalid data.",
+                                "statusCode": 400,
+                                "statusMessage": "Bad Request"
+                            },
+                            {
+                                "errorDetail": "If no schema with specified ID exists.",
+                                "errorMessage": "",
+                                "statusCode": 404,
+                                "statusMessage": "Not Found"
+                            }
+                        ],
+                        "headerSchema": {},
+                        "statusCode": 200,
+                        "statusMessage": "200 OK"
+                    },
+                    "title": "get_schema"
+                },
+                {
+                    "description": "",
+                    "id": "Schemas.get_schemas",
+                    "method": "GET",
+                    "path": "/schemas",
+                    "request": {
+                        "bodySchema": {},
+                        "pathSchema": {},
+                        "querySchema": {
+                            "$ref": "query:get:/"
+                        }
+                    },
+                    "response": {
+                        "bodySchema": {},
+                        "errors": [
+                            {
+                                "errorDetail": "If validation of the URL query string failed.",
+                                "errorMessage": "The request cannot be fulfilled due to bad syntax or invalid data.",
+                                "statusCode": 400,
+                                "statusMessage": "Bad Request"
+                            }
+                        ],
+                        "headerSchema": {},
+                        "statusCode": 200,
+                        "statusMessage": "200 OK"
+                    },
+                    "title": "get_schemas"
+                }
+            ],
+            "path": "/schemas",
+            "title": "Schemas"
+        }
+    ],
+    "schemaLocation": "/",
+    "version": "1"
+}

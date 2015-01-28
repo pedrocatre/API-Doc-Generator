@@ -1,0 +1,1 @@
+define(["handlebars","underscore","jquery"],function(e,t,n){e.registerHelper("parameterRequired",function(e,n){return!t.isUndefined(n)&&t.contains(n,e)?' <span class="path-parameter-required">(required)</span>':""}),e.registerHelper("formatInterfaceId",function(e){return e.split(".").join("")})});

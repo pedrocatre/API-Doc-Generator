@@ -1,0 +1,1 @@
+define(["backbone","modules/apiDocumentation/resources/interfaces/response/error/errorCollection"],function(e,t){return e.Model.extend({initialize:function(){this.interfaceErrorsCollection=new t(this.get("response").errors)}})});

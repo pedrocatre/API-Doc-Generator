@@ -1,0 +1,1 @@
+require({packages:[{name:"foo",main:"lib/index"}]},["foo"],function(e){doh.register("packagesNestedMain",[function(n){n.is("foo",e.name),n.is("bar",e.bar.name)}]),doh.run()});

@@ -1,0 +1,1 @@
+define(["backbone","modules/apiDocumentation/apiModel/apiModelCollection","modules/apiDocumentation/resources/resourceCollection"],function(e,t,n){return e.Model.extend({url:"/apiDocumentation",initialize:function(){this.resourceCollection=new n(this.get("resources"))}})});

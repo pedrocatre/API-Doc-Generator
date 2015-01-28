@@ -1,0 +1,1 @@
+define(["backbone","underscore","modules/apiDocumentation/apiModel/apiModelModel"],function(e,t,n){return e.Collection.extend({model:n})});

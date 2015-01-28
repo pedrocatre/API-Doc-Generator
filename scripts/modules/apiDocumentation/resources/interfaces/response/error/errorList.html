@@ -1,0 +1,23 @@
+<div class="resource-api-errors">
+    <h4>Error Status Codes</h4>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Status Code</th>
+            <th>Error Detail</th>
+            <th>Error Message</th>
+            <th>Status Message</th>
+        </tr>
+        </thead>
+        <tbody>
+        {{#each this}}
+        <tr>
+            <td>{{#if statusCode}}{{ statusCode }}{{else}}–{{/if}}</td>
+            <td>{{#if errorDetail}}{{ errorDetail }}{{else}}–{{/if}}</td>
+            <td>{{#if errorMessage}}{{ errorMessage }}{{else}}–{{/if}}</td>
+            <td>{{#if statusMessage}}{{ statusMessage }}{{else}}–{{/if}}</td>
+        </tr>
+        {{/each}}
+        </tbody>
+    </table>
+</div>
