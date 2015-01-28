@@ -1,0 +1,159 @@
+@delete-interface-element-text-color: #a41e22;
+@get-interface-element-text-color:   #10a54a;
+@post-interface-element-text-color:   #0f6ab4;
+@put-interface-element-text-color:   #c5862b;
+
+.resource-list {
+  padding: 0;
+  list-style-type: none;
+
+  .resource-item {
+    padding: 5px;
+    margin-bottom: 3px;
+    border-bottom: 1px solid #dddddd;
+    &:last-child {
+      border-bottom: none;
+    }
+    /* To avoid margin collapse */
+    table {
+      margin-bottom: 0px;
+    }
+
+    .resource-heading {
+      .show-hide-resource-control, .list-operations-resource-control {
+        border-right: 1px solid #dddddd;
+        padding-right: 5px;
+
+      }
+
+
+      h2 {
+        font-size: 16px;
+        font-weight:900;
+        margin-top: 9px;
+      }
+      .resource-title {
+
+      }
+
+      .resource-description {
+        color: grey;
+      }
+    }
+
+    .interface-list-container {
+      display: none;
+      background-color: aliceblue;
+
+      .interface-list {
+        padding: 0;
+        list-style-type: none;
+
+
+
+        .interface-method-header {
+          padding: 5px;
+          cursor: pointer;
+        }
+
+        .interface-element {
+          margin-top: 8px;
+          .path-parameter-required {
+            color: red;
+          }
+
+
+          .request-list {
+            padding-right: 40px;
+            padding-left:40px;
+            list-style-type: none;
+
+          }
+
+          .response-list {
+            padding-right: 40px;
+            padding-left:40px;
+            list-style-type: none;
+          }
+        }
+
+        /* Remove margin from the first to avoid margin collapse*/
+        .interface-element:first-child {
+          margin-top: 0px;
+        }
+
+        .interface-element-GET {
+          .resource-interface-description, h4, h5 {
+            color: @get-interface-element-text-color;
+          }
+
+        }
+
+        .interface-element-POST {
+          .resource-interface-description, h4, h5 {
+            color: @post-interface-element-text-color;
+          }
+
+        }
+
+        .interface-element-DELETE {
+          .resource-interface-description, h4, h5 {
+            color: @delete-interface-element-text-color;
+          }
+
+        }
+
+        .interface-element-PUT {
+          .resource-interface-description, h4, h5 {
+            color: @put-interface-element-text-color;
+          }
+
+        }
+
+        h5 .body-schema-description {
+          color: grey;
+        }
+
+        .label-POST {
+          background-color: #0f6ab4;
+        }
+
+        .label-GET {
+          background-color: #10a54a;
+        }
+
+        .label-DELETE {
+          background-color: #a41e22;
+        }
+
+        .label-PUT {
+          background-color: #D38042;
+        }
+
+        .POST-header {
+          background-color: #e7f0f7;
+          border: 1px solid #c3d9ec;
+        }
+
+        .GET-header {
+          background-color: #e7f6ec;
+          border: 1px solid #c3e8d1;
+        }
+
+        .DELETE-header {
+          background-color: #f5e8e8;
+          border: 1px solid #e8c6c7;
+        }
+
+        .PUT-header {
+          background-color: #f9f2e9;
+          border: 1px solid #f0e0ca;
+        }
+
+        .interface-details-container {
+          display: none;
+        }
+      }
+    }
+  }
+}

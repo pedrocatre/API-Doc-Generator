@@ -1,0 +1,21 @@
+<div class="request-path-schema">
+    <h4>Path Parameters</h4>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Parameter</th>
+            <th>Description</th>
+            <th>Type</th>
+        </tr>
+        </thead>
+        <tbody>
+        {{#each properties}}
+        <tr>
+            <td>{{ @key }} {{{parameterRequired @key ../required}}}</td>
+            <td>{{ description }}</td>
+            <td>{{ type }}</td>
+        </tr>
+        {{/each}}
+        </tbody>
+    </table>
+</div>

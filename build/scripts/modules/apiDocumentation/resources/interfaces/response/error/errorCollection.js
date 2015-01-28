@@ -1,0 +1,1 @@
+define(["backbone","underscore","modules/apiDocumentation/resources/interfaces/response/error/errorModel"],function(e,t,n){return e.Collection.extend({model:n})});

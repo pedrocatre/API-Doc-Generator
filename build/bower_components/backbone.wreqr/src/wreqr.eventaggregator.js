@@ -1,0 +1,1 @@
+Wreqr.EventAggregator=function(e,t){var n=function(){};return n.extend=e.Model.extend,t.extend(n.prototype,e.Events),n}(Backbone,_);

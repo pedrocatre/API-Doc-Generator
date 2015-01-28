@@ -1,0 +1,12 @@
+<div class="response-body-schema">
+    <h4>Response Body Schema</h4>
+    <h5><span class="body-schema-title">{{ title }}</span> <span class="body-schema-description">{{ description }}</span></h5>
+    <div class="json-editor response-body-schema-js"></div>
+    {{#if required}}
+    <p class="required-fields">Required fields:
+        {{#each required}}
+        <span class="required-field"> <strong>{{this}}</strong></span>
+        {{/each}}
+    </p>
+    {{/if}}
+</div>

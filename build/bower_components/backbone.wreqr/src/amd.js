@@ -1,0 +1,1 @@
+(function(e,t){if(typeof exports=="object"){var n=require("underscore"),r=require("backbone");module.exports=t(n,r)}else typeof define=="function"&&define.amd&&define(["underscore","backbone"],t)})(this,function(e,t){return t.Wreqr});

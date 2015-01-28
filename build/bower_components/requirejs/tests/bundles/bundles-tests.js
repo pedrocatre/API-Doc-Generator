@@ -1,0 +1,1 @@
+require({bundles:{main:["util","main"],second:["other"],third:["third"]}},["util","other","third"],function(e,t,n){require(["main"],function(r){doh.register("bundles",[function(s){s.is("util",e.name),s.is("other",t.name),s.is("third",n.name),s.is("main",r.name)}]),doh.run()})});

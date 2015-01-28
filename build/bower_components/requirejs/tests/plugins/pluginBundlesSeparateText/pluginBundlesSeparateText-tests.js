@@ -1,0 +1,1 @@
+require({paths:{text:"../../../../text/text"},bundles:{main:["text!template.html"]}},["text!template.html","text!second.html"],function(e,t){doh.register("pluginBundlesSeparateText",[function(r){r.is("main template",e),r.is("second template",t)}]),doh.run()});

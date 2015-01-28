@@ -1,0 +1,1 @@
+define(["backbone","jquery"],function(e,t){return e.View.extend({getInnerHTML:function(){return t("<div>").append(this.$el).html()},changeElementVisibility:function(e,t){return e?t.show():t.hide(),this}})});

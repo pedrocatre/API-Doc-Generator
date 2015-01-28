@@ -1,0 +1,1 @@
+require({nodeIdCompat:!0,packages:[{name:"foo",location:"node_modules/foo",main:"lib/index"}]},["foo"],function(e){doh.register("packagesNode",[function(n){n.is("foo",e.name),n.is("bar",e.bar.name),n.is("baz",e.baz.name),n.is("bar",e.baz.bar.name)}]),doh.run()});
